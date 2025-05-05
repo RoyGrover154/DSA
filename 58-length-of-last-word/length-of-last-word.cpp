@@ -7,10 +7,13 @@ public:
             n--;
         }
 
-    int start = n;
-    while (start >= 0 && s[start] != ' '){
-        start--;
+       int length = 0;
+    while (n >= 0 && s[n] != ' ') {
+        length++;
+        n--;
     }
-return n - start;
+
+    return length;
 }
+
 };
