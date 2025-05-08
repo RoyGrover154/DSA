@@ -1,24 +1,18 @@
 class Solution {
 public:
     vector<int> findDuplicates(vector<int>& nums) {
-    int maxvalue = *max_element(nums.begin(), nums.end());
-  
-    vector<int> Newarr(maxvalue+1,0);
+                set<int> st;
+        vector<int> v;
 
-    for(int num: nums){
-       if(num >= 0){
-      Newarr[num]++;
-       }
-    }
-    vector <int> result;
-
-    for(int i=0; i<Newarr.size(); i++){
-        if(Newarr[i] > 1){
-            result.push_back(i);
+        for(int i=0;i<nums.size();i++)
+        {
+            if(st.count(nums[i])){
+                v.push_back(nums[i]);
+            }
+            else{
+                st.insert(nums[i]);
+            }
         }
-    }
-
-
-    return result;
+        return v;
     }
 };
