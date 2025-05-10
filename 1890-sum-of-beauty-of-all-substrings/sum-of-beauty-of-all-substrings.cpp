@@ -2,12 +2,12 @@ class Solution {
 public:
 
 int getMinCount(int freq[]) {
-    int MinCount = INT_MAX;
+    int MinCounts = INT_MAX;
     for (int i = 0; i < 26; i++) {
         if (freq[i] > 0) 
-            MinCount = min(MinCount, freq[i]);
+            MinCounts = min(MinCounts, freq[i]);
     }
-    return MinCount;
+    return MinCounts;
 }
 
 int getMaxCount(int freq[]) {
