@@ -1,4 +1,5 @@
-
+class CommonDivisor{
+public:
  int GCD(int a, int b){
     if(b == 0){
         return a;
@@ -6,7 +7,7 @@
 
    return  GCD(b, a%b);
  }
-
+};
 
 class Solution {    
 public:
@@ -14,8 +15,8 @@ public:
         int a = *min_element(nums.begin(), nums.end());
 
         int b = *max_element(nums.begin(), nums.end());
-
-      int ans =  GCD(a,b);
-    return ans;
+        
+         CommonDivisor cd;
+        return cd.GCD(a, b);
     }
 };
