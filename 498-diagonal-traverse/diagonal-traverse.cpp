@@ -22,7 +22,7 @@ public:
             reverse(it.second.begin(), it.second.end());
         }
         
-        for(int &num : it.second){
+        for(auto num : it.second){
             result.push_back(num);
         }
         flip = !flip;
