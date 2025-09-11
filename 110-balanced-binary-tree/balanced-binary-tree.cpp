@@ -13,39 +13,44 @@ class Solution {
 public:
 
 
-int height(TreeNode* root){
-    if(root==NULL){
-        return 0;
-    }else{
-        return  1+ max(height(root->left), height(root->right));
-    }
+// int height(TreeNode* root){
+//     if(root==NULL){
+//         return 0;
+//     }else{
+//         return  1+ max(height(root->left), height(root->right));
+//     }
+// }
+
+// void inorderUtil(TreeNode* root, bool &ans){
+//     if(root != NULL){
+//         inorderUtil(root->left,ans);
+//         int lh = height(root->left);
+//         int rh = height(root->right);
+
+//         if(abs(lh-rh)>1)
+//             ans = ans && false;
+
+//         inorderUtil(root->right,ans);    
+//     }
+// }
+
+int checkHeight(TreeNode* root){
+    if(root==NULL)
+    return 0;
+
+    int lh = checkHeight(root->left);
+    if(lh == -1) return -1;
+
+    int rh = checkHeight(root->right);
+    if(rh == -1) return -1;
+
+    if(abs(lh-rh) > 1) return -1;
+
+    return max(lh,rh) + 1;
 }
-
-void inorderUtil(TreeNode* root, bool &ans){
-    if(root != NULL){
-        inorderUtil(root->left,ans);
-        int lh = height(root->left);
-        int rh = height(root->right);
-
-        if(abs(lh-rh)>1)
-            ans = ans && false;
-
-        inorderUtil(root->right,ans);    
-    }
-}
-
-
 
 bool isBalanced(TreeNode* root) {
-     if(root == NULL){
-        return true;
-     }
-
-     bool ans = true;
-
-     inorderUtil(root, ans);
-     return ans;
-
+      return checkHeight(root) != -1;
     }
 
 };
