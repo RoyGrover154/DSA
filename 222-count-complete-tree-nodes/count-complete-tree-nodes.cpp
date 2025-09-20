@@ -13,10 +13,40 @@ class Solution {
 public:
 
 
-    int countNodes(TreeNode* root) {
-       if(root==NULL) return 0;
-    
-        return 1 + countNodes(root->left) + countNodes(root->right);
+    int getleftheight(TreeNode* root){
+        TreeNode* temp = root;
+        int lh = 0;
 
+        while(temp != NULL){
+            temp=temp->left;
+            lh++;
+        }
+        return lh;
+    }
+
+
+    int getrightheight(TreeNode* root){
+        TreeNode* temp = root;
+        int rh = 0;
+
+        while(temp != NULL){
+            temp=temp->right;
+            rh++;
+        }
+        return rh;
+    }
+
+    int countNodes(TreeNode* root) {
+       if(root == NULL) 
+        return 0;
+        
+    int lh = getleftheight(root);
+    int rh = getrightheight(root);
+
+    if(lh == rh){ 
+        return (pow(2,lh)-1);
+    }
+
+    return countNodes(root->left) + countNodes(root->right) + 1;
     }
 };
