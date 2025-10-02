@@ -1,32 +1,23 @@
 class Solution {
-
-void find(vector<int>& nums,int index,vector<vector<int>>&ans)
-{
-    if(nums.size() == index)
-    {
-        ans.push_back(nums);
-        return;
-    }
-
-    for(int i=index; i<nums.size(); i++)
-    {
-        swap(nums[i],nums[index]);
-        find(nums,index+1,ans);
-        swap(nums[i],nums[index]);
-
-    }
-}
-
-
-
 public:
+
+    void solve(vector<vector<int>>&ans, vector<int>nums, int index){
+        if(index == nums.size()){
+            ans.push_back(nums);
+            return;
+        }
+
+         for(int i=index; i<nums.size(); i++){
+            swap(nums[index],nums[i]);
+            solve(ans,nums,index+1);
+            swap(nums[index],nums[i]);
+         }
+        }      
+    
+
     vector<vector<int>> permute(vector<int>& nums) {
         vector<vector<int>>ans;
-        
-
-        find(nums,0,ans);
+        solve(ans,nums,0);
         return ans;
-
-
     }
 };
